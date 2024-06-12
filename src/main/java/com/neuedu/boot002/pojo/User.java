@@ -21,9 +21,7 @@ public class User {
     private String password;
     private String phone;
     private String email;
-    @TableField("role")
-    //对应表中r_id
-    private Integer rId;
+    private Integer role;
     private Integer status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField("create_time")
