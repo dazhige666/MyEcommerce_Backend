@@ -124,7 +124,7 @@ public class UserServiceImpl implements IuserService {
             return ServeResponse.error("输入错误") ;
         else {
             u.setPassword("");
-            return ServeResponse.success("登录成功",u);
+            return ServeResponse.success("登录成功",u.getUsername());
         }
 
     }
