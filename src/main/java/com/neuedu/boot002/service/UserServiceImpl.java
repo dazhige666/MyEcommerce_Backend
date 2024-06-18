@@ -96,14 +96,40 @@ public class UserServiceImpl implements IuserService {
     }
     @Override
     public ServeResponse edit(User user) {
-        user.setUpdateTime(LocalDateTime.now());
-        int update = dao.updateById(user);
-        if(update>0)
-            return ServeResponse.success("修改成功");
-        else return ServeResponse.error("修改失败");
+        if(user.getId()>0){
+            user.setUpdateTime(LocalDateTime.now());
+            int update = dao.updateById(user);
+            if(update>0)
+                return ServeResponse.success("修改成功");
+            else return ServeResponse.error("修改失败");
+        }else{
+            user.setCreateTime(LocalDateTime.now());
+            user.setUpdateTime(LocalDateTime.now());
+            user.setStatus(1);
+
+            user.setRole(1);
+            if(dao.insert(user)>0)
+                return ServeResponse.success("添加成功");
+            else return ServeResponse.error("添加失败");
+        }
+    }
+    @Override
+    public ServeResponse login(User user) {
+        QueryWrapper<User> qw = new QueryWrapper<>();
+        qw.eq("username",user.getUsername());
+        qw.eq("password",user.getPassword());
+        qw.eq("role",user.getRole());
+        User u = dao.selectOne(qw);
+        if(u == null)
+            return ServeResponse.error("输入错误") ;
+        else {
+            u.setPassword("");
+            return ServeResponse.success("登录成功",u);
+        }
+
     }
 
-    //数据处理
+    //对封装数据进行处理
     public List<userVo> vos(List<User> users){
         List<userVo> vos = new ArrayList<>();
         for(User u:users){

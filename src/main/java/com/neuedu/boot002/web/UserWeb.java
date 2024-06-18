@@ -1,12 +1,13 @@
 package com.neuedu.boot002.web;
-import com.neuedu.boot002.dao.UserDao;
+
 import com.neuedu.boot002.pojo.User;
 import com.neuedu.boot002.service.IuserService;
 import com.neuedu.boot002.util.ServeResponse;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/back")
 //映射http请求到控制器方法
@@ -47,6 +48,12 @@ public class UserWeb {
     public ServeResponse edit(@RequestBody User user){
         //System.out.println(user);
         return service.edit(user);
+    }
+
+    @RequestMapping("/login")
+    public ServeResponse login(@RequestBody User user ){
+        System.out.println(user);
+        return service.login(user);
     }
 
 

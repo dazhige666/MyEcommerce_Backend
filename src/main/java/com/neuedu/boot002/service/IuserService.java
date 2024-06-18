@@ -14,4 +14,6 @@ public interface IuserService {
     ServeResponse checkUsername(Integer id, String username);
 
      ServeResponse edit(User user);
+
+    ServeResponse login(User user);
 }
