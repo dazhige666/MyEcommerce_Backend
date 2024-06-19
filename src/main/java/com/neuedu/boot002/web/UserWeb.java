@@ -26,10 +26,10 @@ public class UserWeb {
         return service.getAll(pageNumber,pageSize,username,roleName,status);
 
     }
-    @RequestMapping("/updateStatus")
+    @RequestMapping("/updateUserStatus")
     //更新用户状态
     public  ServeResponse updateStatus(Integer id,Boolean status) {
-    return service.updateStatus(id,status);
+    return service.updateUserStatus(id,status);
     //System.out.println(id+"   "+status);}
 }
 

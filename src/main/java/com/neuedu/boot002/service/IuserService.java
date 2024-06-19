@@ -7,7 +7,7 @@ public interface IuserService {
 
     ServeResponse getAll(Integer pageNumber, Integer pageSize, String username, Integer roleName, Integer status);
 
-    ServeResponse updateStatus(Integer id, Boolean status);
+    ServeResponse updateUserStatus(Integer id, Boolean status);
 
     ServeResponse likeName(String username);
 

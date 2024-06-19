@@ -49,7 +49,9 @@ public class UserServiceImpl implements IuserService {
     }
 
     @Override
-    public ServeResponse updateStatus(Integer id, Boolean status) {
+    public ServeResponse updateUserStatus(Integer id, Boolean status) {
+
+
         User u =  new User();
         u.setId(id);
         u.setUpdateTime(LocalDateTime.now());
